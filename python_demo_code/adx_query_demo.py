@@ -39,7 +39,6 @@ def main():
 
 
     # The authentication method will be taken from the chosen KustoConnectionStringBuilder.
-    # client = KustoClient(kcsb)
     with KustoClient(kcsb) as kusto_client:
         query = "record"
         response = kusto_client.execute(KUSTO_DATABASE, query)
