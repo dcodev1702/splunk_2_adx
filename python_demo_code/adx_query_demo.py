@@ -46,7 +46,7 @@ def main():
         print("ADX Hacker Stats:")
         idx = 0
         for key, value in response.primary_results[0]:
-            # Print the desired keys and their values
+            # Print each record and their values
             print(f"Timestamp: {key} :: RECORD-{idx} :: Company: {value['Company']}, Hacker: {value['Hacker']}, Venue: {value['Venue']}")
             idx += 1
           
