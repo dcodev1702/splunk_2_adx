@@ -35,9 +35,9 @@ def main():
     KUSTO_INGEST_URI = "https://ingest-<cluster_name>.<location>.kusto.windows.net/"
     KUSTO_DATABASE   = "splunk-2-adx"
 
+    # Authenticate to ADX Cluster / DBase using Entra ID App Registration (client id & client secret)
     kcsb = KustoConnectionStringBuilder.with_aad_application_key_authentication(CLUSTER, CLIENT_ID, CLIENT_SECRET, AAD_TENANT_ID)
-
-
+    
     # The authentication method will be taken from the chosen KustoConnectionStringBuilder.
     with KustoClient(kcsb) as kusto_client:
         query = "record"
