@@ -16,9 +16,16 @@ def main():
     .create table SplunkLog (TimeGenerated:datetime, Records:dynamic, Type:string)
 
     6. Populate the record table with test data
-    .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""MFCC-G9-DOG"", ""Hacker"":""JJ Bottles"", ""Venue"":""ShmooCon"", ""Type"":""SplunkLog""}"]
-    .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""TrustedSec"", ""Hacker"":""Carlos Perez"", ""Venue"":""BSides PR"", ""Type"":""SplunkLog""}"]
-    .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""TrustedSec"", ""Hacker"":""Edwin David"", ""Venue"":""BSides NoVA"", ""Type"":""SplunkLog""}"]
+    // JSON Type
+    .ingest inline into table SplunkLog with (format = "json") <| {"TimeGenerated":"2024-03-15T20:38:03.9122018Z", "Company":"TrustedSec", "Hacker":"Carlos Perez", "Venue":"BSides PR", "Type":"SplunkLog"}
+
+    .ingest inline into table SplunkLog with (format = "json") <| {"TimeGenerated":"2024-03-14T19:22:43.9122018Z", "Company":"TrustedSec", "Hacker":"Edwin David", "Venue":"BSides Nova", "Type":"SplunkLog"}
+   
+    .ingest inline into table SplunkLog with (format = "json") <| {"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"TrustedSec", "Hacker":"David Kennedy", "Venue":"BSides Cleveland", "Type":"SplunkLog"}
+
+    .ingest inline into table SplunkLog with (format = "json") <| {"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"MFCC-G9-DOG", "Hacker":"JJ Bottles", "Venue":"BSides DC", "Type":"SplunkLog"}
+    
+    .ingest inline into table SplunkLog with (format = "json") <| {"TimeGenerated":"2024-03-15T12:45:54.9122018Z", "Company":"Microsoft Corp", "Hacker":"T0pCyber Cloud Forensicator", "Venue":"BSides Raleigh", "Type":"SplunkLog"}
     '''
     
     ######################################################
