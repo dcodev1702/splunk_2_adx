@@ -16,9 +16,9 @@ def main():
     .create table SplunkLog (TimeGenerated:datetime, Records:dynamic, Type:string)
 
     6. Populate the record table with test data
-    .ingest inline into table SplunkLog [2024-03-15,"{""Company"":""MFCC-G9-DOG"", ""Hacker"":""JJ Bottles"", ""Venue"":""ShmooCon""}", "Splunk"]
-    .ingest inline into table SplunkLog [2024-03-15,"{""Company"":""TrustedSec"", ""Hacker"":""Carlos Perez"", ""Venue"":""BSides PR""}", "Splunk"]
-    .ingest inline into table SplunkLog [2024-03-15,"{""Company"":""TrustedSec"", ""Hacker"":""Edwin David"", ""Venue"":""BSides NoVA""}", "Splunk"]
+    .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""MFCC-G9-DOG"", ""Hacker"":""JJ Bottles"", ""Venue"":""ShmooCon"", ""Type"":""SplunkLog""}"]
+    .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""TrustedSec"", ""Hacker"":""Carlos Perez"", ""Venue"":""BSides PR"", ""Type"":""SplunkLog""}"]
+    .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""TrustedSec"", ""Hacker"":""Edwin David"", ""Venue"":""BSides NoVA""}", ""Type"":""SplunkLog""}"]
     '''
     
     ######################################################
