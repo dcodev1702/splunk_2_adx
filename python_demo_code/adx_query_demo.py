@@ -1,6 +1,5 @@
 
 from datetime import timedelta
-import ast
 
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, ClientRequestProperties
 from azure.kusto.data.exceptions import KustoServiceError
@@ -36,7 +35,7 @@ def main():
     KUSTO_DATABASE   = "splunk-2-adx"
 
     # Authenticate to ADX Cluster / DBase using Entra ID App Registration (client id & client secret)
-    kcsb = KustoConnectionStringBuilder.with_aad_application_key_authentication(CLUSTER, CLIENT_ID, CLIENT_SECRET, AAD_TENANT_ID)
+    kcsb = KustoConnectionStringBuilder.with_aad_application_key_authentication(ADX_CLUSTER, CLIENT_ID, CLIENT_SECRET, AAD_TENANT_ID)
     
     # The authentication method will be taken from the chosen KustoConnectionStringBuilder.
     with KustoClient(kcsb) as kusto_client:
