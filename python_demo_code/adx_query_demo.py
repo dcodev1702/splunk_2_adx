@@ -18,7 +18,7 @@ def main():
     6. Populate the record table with test data
     .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""MFCC-G9-DOG"", ""Hacker"":""JJ Bottles"", ""Venue"":""ShmooCon"", ""Type"":""SplunkLog""}"]
     .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""TrustedSec"", ""Hacker"":""Carlos Perez"", ""Venue"":""BSides PR"", ""Type"":""SplunkLog""}"]
-    .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""TrustedSec"", ""Hacker"":""Edwin David"", ""Venue"":""BSides NoVA""}", ""Type"":""SplunkLog""}"]
+    .ingest inline into table SplunkLog ["{""TimeGenerated"":""2024-03-14"", ""Company"":""TrustedSec"", ""Hacker"":""Edwin David"", ""Venue"":""BSides NoVA"", ""Type"":""SplunkLog""}"]
     '''
     
     ######################################################
