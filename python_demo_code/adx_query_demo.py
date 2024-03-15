@@ -45,9 +45,9 @@ def main():
       
         print("ADX Hacker Stats:")
         idx = 0
-        for key, value in response.primary_results[0]:
+        for time, record in response.primary_results[0]:
             # Print each record and their values
-            print(f"Timestamp: {key} :: RECORD-{idx} :: Company: {value['Company']}, Hacker: {value['Hacker']}, Venue: {value['Venue']}")
+            print(f"Timestamp: {time} :: RECORD-{idx} :: Company: {record['Company']}, Hacker: {record['Hacker']}, Venue: {record['Venue']}")
             idx += 1
           
         kusto_client.close()
