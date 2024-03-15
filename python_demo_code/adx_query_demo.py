@@ -13,12 +13,12 @@ def main():
     3. Create Database
     4. Within the Database -- Assign Admin permission to App Registration
     5. Create Table within ADX Database
-    .create table record (Timestamp:datetime, Trace:dynamic)
+    .create table record (Timestamp:datetime, Trace:dynamic, Type:string)
 
     6. Populate the record table with test data
-    .ingest inline into table record [2024-03-15,"{""Company"":""MFCC-G9-DOG"", ""Hacker"":""JJ Bottles"", ""Venue"":""ShmooCon""}"]
-    .ingest inline into table record [2024-03-15,"{""Company"":""TrustedSec"", ""Hacker"":""Carlos Perez"", ""Venue"":""BSides PR""}"]
-    .ingest inline into table record [2024-03-15,"{""Company"":""TrustedSec"", ""Hacker"":""Edwin David"", ""Venue"":""BSides NoVA""}"]
+    .ingest inline into table record [2024-03-15,"{""Company"":""MFCC-G9-DOG"", ""Hacker"":""JJ Bottles"", ""Venue"":""ShmooCon""}", "Splunk"]
+    .ingest inline into table record [2024-03-15,"{""Company"":""TrustedSec"", ""Hacker"":""Carlos Perez"", ""Venue"":""BSides PR""}", "Splunk"]
+    .ingest inline into table record [2024-03-15,"{""Company"":""TrustedSec"", ""Hacker"":""Edwin David"", ""Venue"":""BSides NoVA""}", "Splunk"]
     '''
     
     ######################################################
