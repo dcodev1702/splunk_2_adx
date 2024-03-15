@@ -13,7 +13,16 @@ def main():
     3. Create Database
     4. Within the Database -- Assign Admin permission to App Registration
     5. Create Table within ADX Database
-    .create table SplunkLog (TimeGenerated:datetime, Records:dynamic, Type:string)
+    .create table ['SplunkLog']  (['TimeGenerated']:datetime, ['Company']:string, ['Hacker']:string, ['Venue']:string, ['Type']:string)
+
+    6. Create Table Mapping
+    .create table SplunkLog ingestion json mapping "SplunkLog_Json_Mapping"
+    ```[{ "column" : "TimeGenerated", "datatype" : "datetime", "Properties":{"Path":"$.TimeGenerated"}},
+        { "column" : "Company", "datatype" : "string", "Properties":{"Path":"$.Company"}},
+        { "column" : "Hacker", "datatype" : "string", "Properties":{"Path":"$.Hacker"}},
+        { "column" : "Venue", "datatype" : "string", "Properties":{"Path":"$.Venue"}},
+        { "column" : "Type", "datatype" : "string", "Properties":{"Path":"$.Type"}}
+      ]```
 
     6. Populate the record table with test data
     // JSON Type
@@ -46,14 +55,16 @@ def main():
     
     # The authentication method will be taken from the chosen KustoConnectionStringBuilder.
     with KustoClient(kcsb) as kusto_client:
-        query = "record"
+        query = "SplunkLog \
+                | sort by TimeGenerated desc"
+        
         response = kusto_client.execute(KUSTO_DATABASE, query)
       
         print("ADX Hacker Stats:")
         idx = 0
-        for time, record in response.primary_results[0]:
+        for record in response.primary_results[0]:
             # Print each record and their values
-            print(f"Timestamp: {time} :: RECORD-{idx} :: Company: {record['Company']}, Hacker: {record['Hacker']}, Venue: {record['Venue']}")
+            print(f"RECORD={idx} -> Timestamp: {record['TimeGenerated']} - Company: {record['Company']} - Hacker: {record['Hacker']} - Venue: {record['Venue']} - Type: {record['Type']}")
             idx += 1
           
         kusto_client.close()
