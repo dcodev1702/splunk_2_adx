@@ -35,7 +35,7 @@ kcsb_ingest = KustoConnectionStringBuilder.with_aad_application_key_authenticati
             database=KUSTO_DATABASE, 
             table=KUSTO_DBASE_TABLE,
             flush_immediately=True,
-            data_format=DataFormat.MULTIJSON, #USE FOR JSON ARRAYS
+            data_format=DataFormat.MULTIJSON,   #USE FOR JSON ARRAYS
             #data_format=DataFormat.JSON,       #USE FOR SINGLE JSON OBJECTS
             report_level=ReportLevel.FailuresAndSuccesses,
             ingestion_mapping_kind=IngestionMappingKind.JSON,
@@ -53,6 +53,7 @@ kcsb_ingest = KustoConnectionStringBuilder.with_aad_application_key_authenticati
             sleep(1)
         '''
 
+        # Will successfully ingest a JSON Array with multiple entries
         file_descriptor = FileDescriptor(f"./logs/data_ingest_all.json")
         result = kusto_client.ingest_from_file(file_descriptor, ingestion_properties=ingestion_props)
         
