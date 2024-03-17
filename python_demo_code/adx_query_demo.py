@@ -32,13 +32,7 @@ def main():
 
         response = kusto_client.execute(KUSTO_DATABASE, query)
 
-        print("ADX Hacker Stats:")
-        idx = 0
-        for record in response.primary_results[0]:
-            # Print the desired keys and their values
-            print(f"RECORD={idx} -> Timestamp: {record['TimeGenerated']} - Company: {record['Company']} - Hacker: {record['Hacker']} - Venue: {record['Venue']} - Type: {record['Type']}")
-            idx += 1
-
+        print(dataframe_from_result_table(response.primary_results[0]))
         kusto_client.close()
 
 if __name__ == "__main__":
