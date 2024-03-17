@@ -48,24 +48,26 @@ def main():
     KUSTO_INGEST_URI = "https://ingest-<cluster_name>.<location>.kusto.windows.net/"
     KUSTO_DATABASE   = "splunk-2-adx"
 
-    # Authenticate to ADX Cluster / DBase using Entra ID App Registration (client id & client secret)
     kcsb = KustoConnectionStringBuilder.with_aad_application_key_authentication(ADX_CLUSTER, CLIENT_ID, CLIENT_SECRET, AAD_TENANT_ID)
-    
+
     # The authentication method will be taken from the chosen KustoConnectionStringBuilder.
     with KustoClient(kcsb) as kusto_client:
-        query = "SplunkTable \
-        | extend pj = parse_json(FWLogEntry) \
-        | project TimeGenerated=pj.TimeGenerated, Company=pj.Company, Hacker=pj.Hacker, Venue=pj.Venue, Type=pj.Type"
         
+        # QUERY ADX DBASE TABLE
+        query = "SplunkTable \
+                | extend p = parse_json(FWLogEntry) \
+                | sort by todatetime(p.TimeGenerated) desc \
+                | distinct TimeGenerated=todatetime(p.TimeGenerated), Company=tostring(p.Company), Hacker=tostring(p.Hacker), Venue=tostring(p.Venue), Type=tostring(p.Type)"
+
         response = kusto_client.execute(KUSTO_DATABASE, query)
-      
+
         print("ADX Hacker Stats:")
         idx = 0
         for record in response.primary_results[0]:
-            # Print each record and their values
+            # Print the desired keys and their values
             print(f"RECORD={idx} -> Timestamp: {record['TimeGenerated']} - Company: {record['Company']} - Hacker: {record['Hacker']} - Venue: {record['Venue']} - Type: {record['Type']}")
             idx += 1
-          
+
         kusto_client.close()
 
 if __name__ == "__main__":
