@@ -1,40 +1,11 @@
 
 from datetime import timedelta
-
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, ClientRequestProperties
 from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 
 def main():
 
-    '''
-    1. Create App Registration & Secret from Entra ID
-    2. Record Client_ID, Client_Secret, and Tenant_ID from App Registration
-    3. Create Database
-    4. Within the Database -- Assign Admin permission to App Registration
-    5. Create Table within ADX Database
-    .create table SplunkTable (FWLogEntry:dynamic)
-
-    // Create mapping
-    .create table SplunkTable ingestion json mapping 'SplunkTable_JSON_Mapping' '[{"column":"FWLogEntry", "Properties":{"Path":"$.FWLogEntry"}}]'
-
-    // Show mapping
-    .show table SplunkTable ingestion json mapping "SplunkTable_JSON_Mapping"
-
-    6. Populate the record table with test data
-    // JSON Type
-    .ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-15T20:38:03.9122018Z", "Company":"TrustedSec", "Hacker":"Carlos Perez", "Venue":"BSides PR", "Type":"SplunkLog"}}
-
-    .ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-14T19:22:43.9122018Z", "Company":"TrustedSec", "Hacker":"Edwin David", "Venue":"BSides Nova", "Type":"SplunkLog"}}
-   
-    .ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"TrustedSec", "Hacker":"David Kennedy", "Venue":"BSides Cleveland", "Type":"SplunkLog"}}
-
-    .ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"MFCC-G9-DOG", "Hacker":"JJ Bottles", "Venue":"BSides DC", "Type":"SplunkLog"}}
-
-    .ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-15T12:45:54.9122018Z", "Company":"Microsoft Corp", "Hacker":"T0pCyber Cloud Forensicator", "Venue":"BSides Raleigh", "Type":"SplunkLog"}}
-
-    '''
-    
     ######################################################
     ##                        AUTH                      ##
     ######################################################
