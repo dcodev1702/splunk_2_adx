@@ -6,44 +6,30 @@
 // Create table
 .create table SplunkTableRaw (Records:dynamic)
 
-// Create mapping FROM log entry getting ingested from source and map it to 'Records'
+// $.FWLogEntry <-> MUST MATCH THE JSON OBJECT GETTING INGESTED FROM THE SOURCE [JSON FILE]!!
+// FWLogEntry gets MAPPED TO THE "RECORDS" COLUMN of the SplunkTableRaw Table
+// e.g. {"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"MFCC-G9-DOG", "Hacker":"Maj JJ Bottles", "Venue":"BSides DC", "Type":"SplunkTable"}}
 .create table SplunkTableRaw ingestion json mapping 'SplunkTableMapping' '[{"column":"Records", "Properties":{"Path":"$.FWLogEntry"}}]'
 
 .alter-merge table SplunkTableRaw policy retention softdelete = 0d
 
 .create table SplunkTable (FWLogEntry:dynamic)
 
-//Keeping the Expand function simple until the actual schema is defined
 .create-or-alter function SplunkTableExpand() {
     SplunkTableRaw
     | project Records
 }
 
-//.drop function SplunkTableExpand
-
 .alter table SplunkTable policy update @'[{"Source": "SplunkTableRaw", "Query": "SplunkTableExpand()", "IsEnabled": true, "IsTransactional": true}]'
 
-//.show table SplunkTable ingestion json mapping "SplunkTable_JSON_Mapping"
-
+//.drop function SplunkTableExpand
 //.drop table SplunkTable ingestion json mapping "SplunkTable_JSON_Mapping"
 
-// JSON Type used for basic testing.
-.ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-15T20:38:03.9122018Z", "Company":"TrustedSec", "Hacker":"Carlos Perez", "Venue":"BSides PR", "Type":"SplunkTable"}}
-
-.ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-14T19:22:43.9122018Z", "Company":"TrustedSec", "Hacker":"Edwin David", "Venue":"BSides Nova", "Type":"SplunkTable"}}
-   
-.ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"TrustedSec", "Hacker":"David Kennedy", "Venue":"BSides Cleveland", "Type":"SplunkTable"}}
-
+// dummy data to ingest and ensure the tables, policies, mapping, and expand function is operating correctly. 
 .ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"MFCC-G9-DOG", "Hacker":"Maj JJ Bottles", "Venue":"BSides DC", "Type":"SplunkTable"}}
-
-.ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-17T10:21:39.9122018Z", "Company":"MCCOB S-3", "Hacker":"Capt Compiler", "Venue":"DEFCON", "Type":"SplunkTable"}}
-
-.ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-15T12:45:54.9122018Z", "Company":"Microsoft Corp", "Hacker":"T0pCyber Cloud Forensicator", "Venue":"BSides Raleigh", "Type":"SplunkTable"}}
-
 
 SplunkTable
 
 SplunkTable
 | extend t = parse_json(FWLogEntry)
-| sort by todatetime(t.TimeGenerated) desc
 | distinct TimeGenerated=todatetime(t.TimeGenerated), Company=tostring(t.Company), Hacker=tostring(t.Hacker), Venue=tostring(t.Venue), Type=tostring(t.Type)
