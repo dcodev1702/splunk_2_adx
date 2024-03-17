@@ -1,3 +1,8 @@
+1. Create App Registration & Secret from Entra ID
+2. Record Client_ID, Client_Secret, and Tenant_ID from App Registration
+3. Create Database
+4. Within the Database -- Assign Admin permission to App Registration
+5. Create Table within ADX Database
 // Create table
 .create table SplunkTableRaw (Records:dynamic)
 
