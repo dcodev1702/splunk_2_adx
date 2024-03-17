@@ -9,7 +9,6 @@ from azure.kusto.ingest import (
     QueuedIngestClient,
     IngestionMappingKind, 
     IngestionMappingReference,
-    IngestionProperties,
 )
 
 # https://learn.microsoft.com/en-us/azure/data-explorer/ingest-json-formats?tabs=python
