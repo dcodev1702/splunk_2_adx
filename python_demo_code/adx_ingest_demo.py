@@ -1,27 +1,23 @@
-from datetime import timedelta
-
-from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, ClientRequestProperties
-from azure.kusto.data.exceptions import KustoServiceError
+from time import sleep
+from azure.kusto.data import KustoConnectionStringBuilder
 from azure.kusto.data.helpers import dataframe_from_result_table
-from azure.kusto.data.data_format import DataFormat, IngestionMappingKind
+from azure.kusto.data.data_format import DataFormat
 from azure.kusto.ingest import (
-    BlobDescriptor,
     FileDescriptor,
     IngestionProperties,
     ReportLevel,
-    IngestionStatus,
-    KustoStreamingIngestClient,
-    ManagedStreamingIngestClient,
     QueuedIngestClient,
-    StreamDescriptor,
+    IngestionMappingKind, 
+    IngestionMappingReference,
+    IngestionProperties,
 )
 
+# https://learn.microsoft.com/en-us/azure/data-explorer/ingest-json-formats?tabs=python
 def main():
 
     ######################################################
     ##                        AUTH                      ##
     ######################################################
-
     # Note that the 'help' cluster only allows interactive
     # access by AAD users (and *not* AAD applications)
     ADX_CLUSTER       = "https://<cluster>.<location>.kusto.windows.net"
@@ -43,17 +39,20 @@ def main():
             flush_immediately=True,
             data_format=DataFormat.JSON,
             report_level=ReportLevel.FailuresAndSuccesses,
-            #ingestion_mapping_kind=IngestionMappingKind.JSON,
-            #ingestion_mapping_reference="SplunkTable_JSON_Mapping",
+            ingestion_mapping_kind=IngestionMappingKind.JSON,
+            ingestion_mapping_reference="SplunkTableMapping",
         )
 
-        # ingest from json file: splunk_ingest_demo.json
-        file_descriptor = FileDescriptor("./splunk_ingest_demo.json", 4000)  # 4000 is the raw size of the data in bytes.
-        kusto_client.ingest_from_file(file_descriptor, ingestion_properties=ingestion_props)
-        result = kusto_client.ingest_from_file("./splunk_ingest_demo.json", ingestion_properties=ingestion_props)
+        # ingest from file
+        for i in range(6):
+            file_descriptor = FileDescriptor(f"./logs/dodea_ingest-{i}.json")  # 4096 is the raw size of the data in bytes.
+            result = kusto_client.ingest_from_file(file_descriptor, ingestion_properties=ingestion_props)
+            
+            # Inspect the result for useful information, such as source_id and blob_url
+            print(repr(result))
+            sleep(1)
 
-        # Inspect the result for useful information, such as source_id and blob_url
-        print(repr(result))
+        
         kusto_client.close()
         
 
