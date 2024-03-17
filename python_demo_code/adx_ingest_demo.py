@@ -45,7 +45,7 @@ kcsb_ingest = KustoConnectionStringBuilder.with_aad_application_key_authenticati
         '''
         # ingest from json files with a single JSON object per line
         for i in range(6):
-            file_descriptor = FileDescriptor(f"./logs/dodea_ingest-{i}.json")  # 4096 is the raw size of the data in bytes.
+            file_descriptor = FileDescriptor(f"./logs/data_ingest-{i}.json")  # 4096 is the raw size of the data in bytes.
             result = kusto_client.ingest_from_file(file_descriptor, ingestion_properties=ingestion_props)
             
             # Inspect the result for useful information, such as source_id and blob_url
@@ -53,7 +53,7 @@ kcsb_ingest = KustoConnectionStringBuilder.with_aad_application_key_authenticati
             sleep(1)
         '''
 
-        file_descriptor = FileDescriptor(f"./logs/dodea_ingest-all.json")
+        file_descriptor = FileDescriptor(f"./logs/data_ingest_all.json")
         result = kusto_client.ingest_from_file(file_descriptor, ingestion_properties=ingestion_props)
         
         print(repr(result))
