@@ -25,7 +25,7 @@ def main():
     AAD_TENANT_ID     = ""
     KUSTO_INGEST_URI  = "https://ingest-<cluster>.<location>.kusto.windows.net/"
     KUSTO_DATABASE    = "splunk-2-adx"
-    KUSTO_DBASE_TABLE = "SplunkTable"
+    KUSTO_DBASE_TABLE = "SplunkTableRaw"
 
     kcsb_ingest = KustoConnectionStringBuilder.with_aad_application_key_authentication(KUSTO_INGEST_URI, CLIENT_ID, CLIENT_SECRET, AAD_TENANT_ID)
 
