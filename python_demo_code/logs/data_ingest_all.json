@@ -1,8 +1,8 @@
 [
 	{"FWLogEntry":{"TimeGenerated":"2024-03-14T19:22:43.9122018Z", "Company":"TrustedSec", "Hacker":"Edwin David", "Venue":"BSides Nova", "Type":"SplunkTable"}},
 	{"FWLogEntry":{"TimeGenerated":"2024-03-15T20:38:03.9122018Z", "Company":"TrustedSec", "Hacker":"Carlos Perez", "Venue":"BSides PR", "Type":"SplunkTable"}},
-	{"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"TrustedSec", "Hacker":"David Kennedy", "Venue":"BSides Cleveland", "Type":"SplunkTable"}},
+	{"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"TrustedSec", "Hacker":"David Kennedy", "Venue":"DerbyCon", "Type":"SplunkTable"}},
 	{"FWLogEntry":{"TimeGenerated":"2024-03-17T13:15:44.9122018Z", "Company":"MFCC-G9-DOG", "Hacker":"Maj JJ Bottles", "Venue":"BSides DC", "Type":"SplunkTable"}},
-	{"FWLogEntry":{"TimeGenerated":"2024-03-16T08:32:59.9122018Z", "Company":"MCCOB S-3", "Hacker":"Capt Compiler", "Venue":"BSides Tampa", "Type":"SplunkTable"}},
+	{"FWLogEntry":{"TimeGenerated":"2024-03-16T08:32:59.9122018Z", "Company":"MCCOB S-3", "Hacker":"Capt Compiler", "Venue":"DEFCON", "Type":"SplunkTable"}},
 	{"FWLogEntry":{"TimeGenerated":"2024-03-15T12:45:54.9122018Z", "Company":"Microsoft Corp", "Hacker":"T0pCyber Cloud Forensicator", "Venue":"BSides Raleigh", "Type":"SplunkTable"}}
 ]
