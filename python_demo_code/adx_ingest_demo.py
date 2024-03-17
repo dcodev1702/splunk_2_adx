@@ -19,9 +19,9 @@ def main():
     # Note that the 'help' cluster only allows interactive
     # access by AAD users (and *not* AAD applications)
     ADX_CLUSTER       = "https://<cluster>.<location>.kusto.windows.net"
-    CLIENT_ID         = ""
-    CLIENT_SECRET     = ""
-    AAD_TENANT_ID     = ""
+    CLIENT_ID         = "ENTER_YOUR_CLIENT_ID"
+    CLIENT_SECRET     = "ENTER_YOUR_CLIENT_SECRET"
+    AAD_TENANT_ID     = "ENTER_YOUR_TENANT_ID"
     KUSTO_INGEST_URI  = "https://ingest-<cluster>.<location>.kusto.windows.net/"
     KUSTO_DATABASE    = "splunk-2-adx"
     KUSTO_DBASE_TABLE = "SplunkTableRaw"
