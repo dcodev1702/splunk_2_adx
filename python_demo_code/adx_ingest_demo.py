@@ -54,7 +54,7 @@ kcsb_ingest = KustoConnectionStringBuilder.with_aad_application_key_authenticati
         '''
 
         # Will successfully ingest a JSON Array with multiple entries
-        file_descriptor = FileDescriptor(f"./logs/data_ingest_all.json")
+        file_descriptor = FileDescriptor("./logs/data_ingest_all.json")
         result = kusto_client.ingest_from_file(file_descriptor, ingestion_properties=ingestion_props)
         
         print(repr(result))
