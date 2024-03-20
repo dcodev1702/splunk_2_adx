@@ -1,0 +1,42 @@
+// Setup continious export from ADX DBase Table to ADLSv2
+// https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity?tabs=system-assigned%2Cazure-storage
+.alter-merge cluster policy managed_identity ```[
+    {
+      "ObjectId": "system",
+      "AllowedUsages": "AutomatedFlows"
+    }
+]```
+
+// System identity: 9dd3e9c8-xxxx-4311-xxx-xxxxxxxxxxxx
+// Give the System Managed Identity access to the database
+.add database ['splunk-2-adx'] admins ('aadapp=9dd3e9c8-xxxx-4311-xxx-xxxxxxxxxxxx')
+
+// Create ADLSv2 and Container where data for the external table will reside
+// Assign Managed Identity to ADLSv2 Container [ADX -> Identity -> Add 'Storage Blob Data Contributor']
+
+// Create table in ADLSv2 container
+// Storage Account: "https://adxlogretention.blob.core.windows.net/splunktableext/m2131/data;impersonate"
+// Table Schema's from internal table has to exactly match the external table you're creating
+.create external table SplunkTableEXT (FWLogEntry:dynamic) kind=storage dataformat=json 
+( 
+    h@'https://adxlogretention.blob.core.windows.net/splunktableext/m2131/data;impersonate' 
+)
+
+// Create a continious export job
+.create-or-alter continuous-export SplunkTableExport over (SplunkTable) to table SplunkTableEXT with (managedIdentity="system", intervalBetweenRuns=5m) <| SplunkTable
+
+// ADX LOCAL TABLE QUERY
+// The internal and external tables should operate in the same manner with respect to KQL queries
+SplunkTable
+
+SplunkTable
+| extend t = parse_json(FWLogEntry)
+| distinct TimeGenerated=todatetime(t.TimeGenerated), Company=tostring(t.Company), Hacker=tostring(t.Hacker), Venue=tostring(t.Venue), Type=tostring(t.Type)
+
+// ADLSv2 EXTERNAL TABLE QUERY
+external_table("SplunkTableEXT")
+
+external_table('SplunkTableEXT')
+| extend t = parse_json(FWLogEntry)
+| distinct TimeGenerated=todatetime(t.TimeGenerated), Company=tostring(t.Company), Hacker=tostring(t.Hacker), Venue=tostring(t.Venue), Type=tostring(t.Type)
+
