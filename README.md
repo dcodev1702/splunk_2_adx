@@ -10,6 +10,16 @@ Python demo using Kusto SDK to ingest to and query from ADX Database (Table|Splu
 5. Enable Managed Identity (System) for you ADX Cluster
 6. Within the Database -- Assign "Admin permission" to App Registration
 7. Create Tables, Mapping, and Expand function within ADX Database
+8. Install Python 3.X w/ the Kusto Python SDK (Windows / Linux / MacOS)
+   ```console
+      mkdir .adx_python
+      python -m venv .adx_python
+      source .adx_python/bin/activate
+   ```
+   ```console
+      pip install azure-kusto-data
+      pip install azure-kusto-ingest
+   ```
    
 ## Illustration
 ### Ingestion: Python Kusto SDK used to programmatically authenicate & ingest data [data_ingest_all.json]
