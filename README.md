@@ -1,7 +1,7 @@
 # Splunk-2-ADX (Azure Data Explorer) Data Migration
 Python demo using Kusto SDK to ingest to and query from ADX Database (Table|SplunkTableRaw)
 
-## How-To:
+## [How-To](https://learn.microsoft.com/en-us/azure/data-explorer/ingest-json-formats?tabs=python):
 0. Log into Azure with the required permissions / access
 1. Create App Registration & Secret from Entra ID
 2. Record Client_ID, Client_Secret, and Tenant_ID from App Registration
