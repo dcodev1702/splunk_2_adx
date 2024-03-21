@@ -22,10 +22,10 @@ Python demo using Kusto SDK to ingest to and query from ADX Database (Table|Splu
    ```
    
 ## Illustration
-### Ingestion: Python Kusto SDK used to programmatically authenicate & ingest data [data_ingest_all.json]
+### Ingestion: Kusto Python SDK used to programmatically authenicate & ingest data [data_ingest_all.json]
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/757a1101-0645-487f-a4ec-b6c39d797935)
 
-### ADX Database Query (SplunkTable) via Python Kusto SDK
+### ADX Database Query (SplunkTable) via Kusto Python SDK
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/40b61863-2b81-4e0b-add7-22881bb7473d)
 
 ### ADX Database Query (SplunkTable) via ADX
