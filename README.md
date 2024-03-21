@@ -12,7 +12,7 @@ Python demo using Kusto SDK to ingest to and query from ADX Database (Table|Splu
 7. Create Tables, Mapping, and Expand function within ADX Database
 8. [Install Python 3.X](https://www.python.org/downloads/) w/ the Kusto Python SDK (Windows / Linux / MacOS)
    ```console
-      mkdir .adx_python
+      mkdir adx_demo
       python -m venv adx_demo
       source adx_demo/bin/activate
    ```
