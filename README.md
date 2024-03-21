@@ -13,8 +13,8 @@ Python demo using Kusto SDK to ingest to and query from ADX Database (Table|Splu
 8. Install Python 3.X w/ the Kusto Python SDK (Windows / Linux / MacOS)
    ```console
       mkdir .adx_python
-      python -m venv .adx_python
-      source .adx_python/bin/activate
+      python -m venv adx_demo
+      source adx_demo/bin/activate
    ```
    ```console
       pip install azure-kusto-data
