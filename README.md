@@ -38,3 +38,7 @@ Sample Data (JSON): data_ingest_all.json
 Microsoft Source Document: [here!](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity?tabs=system-assigned%2Cazure-storage)
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/26a304ac-d73c-49e9-ad69-1317a152e96c)
 
+### Acquire schema from an ADX internal table to create an external table via ADLSv2
+![AF95AC0F-3E1A-4EE8-A470-1FD5D8685FD3_1_201_a](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/133e808a-cb4e-4bda-85c4-f35645bdbb75)
+
+
