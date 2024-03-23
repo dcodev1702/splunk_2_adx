@@ -35,5 +35,6 @@ Sample Data (JSON): data_ingest_all.json
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/812b5597-70cd-4363-a5d4-0e4d07cbee0e)
 
 ### Enable Continious Export of ADX DBase (Tables) to ADLSv2 (LT storage) via managed identities (system)
+[Microsoft Source Document](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity?tabs=system-assigned%2Cazure-storage)
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/26a304ac-d73c-49e9-ad69-1317a152e96c)
 
