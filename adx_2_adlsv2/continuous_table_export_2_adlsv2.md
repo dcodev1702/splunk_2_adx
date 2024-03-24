@@ -25,7 +25,7 @@ Existing internal table schema can be copied and directly applied to create the 
 ```console
 .show table Heartbeat cslschema | project Schema
 ```
-![BD918AE0-1407-4091-8EC7-A65CF26A75CC](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/4f9484fc-3c4d-4ef2-b55e-d1bfae328b4e)
+![FF1EA34C-B7F1-4BA0-AD09-5FB8956D3A99](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/40767554-60b7-407c-b422-d5c4544682c2)
 
 Supported Data Formats: CSV, JSON, and PARQUET <br />
 <span style="color:blue">*!!!! THE EXTERNAL TABLE SCHEMA HAS TO MATCH THE INTERNAL TABLE SCHEMA !!!!*</span>
