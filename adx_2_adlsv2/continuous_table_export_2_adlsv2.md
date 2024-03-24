@@ -40,7 +40,7 @@ dataformat=parquet
 )
 ```
 
-Create a continious export job from ADX -> ADLSv2
+Create a continious export job from ADX [Heartbeat] -> ADLSv2 [HeartbeatEXT]
 ```console
 .create-or-alter continuous-export HeartbeatExport over (Heartbeat) to table HeartbeatEXT with (managedIdentity="system", intervalBetweenRuns=5m) <| Heartbeat
 ```
