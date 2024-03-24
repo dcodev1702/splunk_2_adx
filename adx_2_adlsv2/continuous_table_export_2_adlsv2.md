@@ -20,7 +20,7 @@ Assign Managed Identity to ADLSv2 Container [ADX -> Identity -> Add 'Storage Blo
 
 Create table in ADLSv2 container: <br />
 Storage Account: "https://adxlogretention.blob.core.windows.net/hearbeatext/m2131/data;impersonate" <br />
-Table Schema's from internal table has to exactly match the external table you're creating. <br />
+Table Schema's from internal table [ADX] has to exactly match the external table [ADLSv2] you're creating. <br />
 Existing internal table schema can be copied and directly applied to create the external table. <br />
 Example:
 ```console
