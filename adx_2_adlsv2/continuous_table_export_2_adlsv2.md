@@ -20,7 +20,7 @@ Assign Managed Identity to ADLSv2 Storage Account: [ADX -> Identity -> Add 'Stor
 ![6A7DBF0A-8301-4D3E-A33C-F52CF0BAFD7D](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/c0c82abd-aa8d-432d-9b4f-e9b55902b835)
 
 Create table in ADLSv2 container: <br />
-Storage Account/Container: "https://adxlogretention.blob.core.windows.net/hearbeat/m2131/data;impersonate" <br />
+Storage Account/Container: "https://dodealogretention.blob.core.windows.net/hearbeat/m2131/data;impersonate" <br />
 Table Schema's from internal table [ADX] has to exactly match the external table [ADLSv2] you're creating. <br />
 Existing internal table schema can then be copied and directly applied to create the external table. <br />
 ```console
@@ -36,7 +36,7 @@ Supported Data Formats: CSV, JSON, and PARQUET <br />
 kind=storage
 dataformat=parquet 
 ( 
-    h@'https://adxlogretention.blob.core.windows.net/heartbeat/m2131/data;impersonate' 
+    h@'https://dodealogretention.blob.core.windows.net/heartbeat/m2131/data;impersonate' 
 )
 ```
 
