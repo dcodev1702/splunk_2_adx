@@ -23,7 +23,7 @@ Storage Account: "https://adxlogretention.blob.core.windows.net/hearbeatext/m213
 Table Schema's from internal table [ADX] has to exactly match the external table [ADLSv2] you're creating. <br />
 Existing internal table schema can be copied and directly applied to create the external table. <br />
 ```console
-.show table Heartbeat cslschema
+.show table Heartbeat cslschema | project Schema
 ```
 ![BD918AE0-1407-4091-8EC7-A65CF26A75CC](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/4f9484fc-3c4d-4ef2-b55e-d1bfae328b4e)
 
