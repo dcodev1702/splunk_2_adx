@@ -33,7 +33,7 @@ Supported Data Formats: CSV, JSON, and PARQUET
 )
 ```
 
-Create a continious export job
+Create a continious export job from ADX -> ADLSv2
 ```console
 .create-or-alter continuous-export SplunkTableExport over (SplunkTable) to table SplunkTableEXT with (managedIdentity="system", intervalBetweenRuns=5m) <| SplunkTable
 ```
