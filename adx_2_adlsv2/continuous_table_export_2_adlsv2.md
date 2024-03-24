@@ -17,10 +17,16 @@
 // Create table in ADLSv2 container
 // Storage Account: "https://adxlogretention.blob.core.windows.net/splunktableext/m2131/data;impersonate"
 // Table Schema's from internal table has to exactly match the external table you're creating
-.create external table SplunkTableEXT (FWLogEntry:dynamic) kind=storage dataformat=json 
+// Existing internal table schema can be copied and directly applied to create the external table
+// Example: CMD:= .show table Heartbeat cslschema
+![BD918AE0-1407-4091-8EC7-A65CF26A75CC](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/4f9484fc-3c4d-4ef2-b55e-d1bfae328b4e)
+
+```console
+.create external table SplunkTableEXT (FWLogEntry:dynamic) kind=storage dataformat=parquet
 ( 
     h@'https://adxlogretention.blob.core.windows.net/splunktableext/m2131/data;impersonate' 
 )
+```
 
 // Create a continious export job
 .create-or-alter continuous-export SplunkTableExport over (SplunkTable) to table SplunkTableEXT with (managedIdentity="system", intervalBetweenRuns=5m) <| SplunkTable
