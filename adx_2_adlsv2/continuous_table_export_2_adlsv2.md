@@ -38,7 +38,7 @@ Create a continious export job from ADX -> ADLSv2
 .create-or-alter continuous-export SplunkTableExport over (SplunkTable) to table SplunkTableEXT with (managedIdentity="system", intervalBetweenRuns=5m) <| SplunkTable
 ```
 
-ADX LOCAL TABLE QUERY <br />
+ADX QUERY (internal table) <br />
 The internal and external tables should operate in the same manner with respect to KQL queries <br />
 ```console
 SplunkTable
@@ -48,7 +48,7 @@ SplunkTable
 | distinct TimeGenerated=todatetime(t.TimeGenerated), Company=tostring(t.Company), Hacker=tostring(t.Hacker), Venue=tostring(t.Venue), Type=tostring(t.Type)
 ```
 
-ADLSv2 EXTERNAL TABLE QUERY
+ADLSv2 QUERY (external table)
 ```console
 external_table("SplunkTableEXT")
 
