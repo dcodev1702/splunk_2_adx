@@ -19,7 +19,7 @@ Create ADLSv2 storage account and Container where data for the external table wi
 Assign Managed Identity to ADLSv2 Container [ADX -> Identity -> Add 'Storage Blob Data Contributor']
 
 Create table in ADLSv2 container: <br />
-Storage Account: "https://adxlogretention.blob.core.windows.net/hearbeatext/m2131/data;impersonate" <br />
+Storage Account: "https://adxlogretention.blob.core.windows.net/hearbeat/m2131/data;impersonate" <br />
 Table Schema's from internal table [ADX] has to exactly match the external table [ADLSv2] you're creating. <br />
 Existing internal table schema can then be copied and directly applied to create the external table. <br />
 ```console
@@ -33,7 +33,7 @@ Supported Data Formats: CSV, JSON, and PARQUET <br />
 ```console
 .create external table HeartbeatEXT (TenantId:string,SourceSystem:string,TimeGenerated:datetime,MG:string,ManagementGroupName:string,SourceComputerId:string,ComputerIP:string,Computer:string,Category:string,OSType:string,OSName:string,OSMajorVersion:string,OSMinorVersion:string,Version:string,SCAgentChannel:string,IsGatewayInstalled:string,RemoteIPLongitude:string,RemoteIPLatitude:string,RemoteIPCountry:string,SubscriptionId:string,ResourceGroup:string,ResourceProvider:string,Resource:string,ResourceId:string,ResourceType:string,ComputerEnvironment:string,Solutions:string,VMUUID:string,ComputerPrivateIPs:string,Type:string,_ResourceId:string) kind=storage dataformat=parquet 
 ( 
-    h@'https://adxlogretention.blob.core.windows.net/heartbeatext/m2131/data;impersonate' 
+    h@'https://adxlogretention.blob.core.windows.net/heartbeat/m2131/data;impersonate' 
 )
 ```
 
