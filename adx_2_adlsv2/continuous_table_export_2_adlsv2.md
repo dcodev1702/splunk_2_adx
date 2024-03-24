@@ -16,10 +16,13 @@ Create ADLSv2 and Container where data for the external table will reside
 Assign Managed Identity to ADLSv2 Container [ADX -> Identity -> Add 'Storage Blob Data Contributor']
 
 Create table in ADLSv2 container
-Storage Account: "https://adxlogretention.blob.core.windows.net/splunktableext/m2131/data;impersonate"
+Storage Account: "https://adxlogretention.blob.core.windows.net/splunktableext/m2131/data;impersonate" <br />
 Table Schema's from internal table has to exactly match the external table you're creating
 Existing internal table schema can be copied and directly applied to create the external table
-Example: CMD:= .show table Heartbeat cslschema
+Example:
+```console
+.show table Heartbeat cslschema
+```
 ![BD918AE0-1407-4091-8EC7-A65CF26A75CC](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/4f9484fc-3c4d-4ef2-b55e-d1bfae328b4e)
 
 ```console
