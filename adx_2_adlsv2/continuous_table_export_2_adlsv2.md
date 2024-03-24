@@ -19,7 +19,7 @@ Give the System Assigned Identity access to the database (requires admin access 
 Assign System Assigned Identity to the newly created ADLSv2 Storage Account: [ADX -> Identity -> Add 'Storage Blob Data Contributor']
 ![6A7DBF0A-8301-4D3E-A33C-F52CF0BAFD7D](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/c0c82abd-aa8d-432d-9b4f-e9b55902b835)
 
-Create table in ADLSv2 container: <br />
+Create the external table in ADLSv2 container: <br />
 Storage Account/Container: "https://dodealogretention.blob.core.windows.net/hearbeat/m2131/data;impersonate" <br />
 Table Schema's from internal table [ADX] has to exactly match the external table [ADLSv2] you're creating. <br />
 Existing internal table schema can then be copied and directly applied to create the external table. <br />
