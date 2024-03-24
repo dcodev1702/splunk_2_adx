@@ -18,7 +18,7 @@ Create ADLSv2 and Container where data for the external table will reside
 Assign Managed Identity to ADLSv2 Container [ADX -> Identity -> Add 'Storage Blob Data Contributor']
 
 Create table in ADLSv2 container
-Storage Account: "https://adxlogretention.blob.core.windows.net/splunktableext/m2131/data;impersonate" <br />
+Storage Account: "https://adxlogretention.blob.core.windows.net/hearbeatext/m2131/data;impersonate" <br />
 Table Schema's from internal table has to exactly match the external table you're creating
 Existing internal table schema can be copied and directly applied to create the external table
 Example:
@@ -31,9 +31,9 @@ Supported Data Formats: CSV, JSON, and PARQUET <br />
 <span style="color:blue">*!!!! THE EXTERNAL TABLE SCHEMA HAS TO MATCH THE INTERNAL TABLE SCHEMA !!!!*</span>
 
 ```console
-.create external table SplunkTableEXT (FWLogEntry:dynamic) kind=storage dataformat=parquet
+.create external table HeartbeatEXT (TenantId:string,SourceSystem:string,TimeGenerated:datetime,MG:string,ManagementGroupName:string,SourceComputerId:string,ComputerIP:string,Computer:string,Category:string,OSType:string,OSName:string,OSMajorVersion:string,OSMinorVersion:string,Version:string,SCAgentChannel:string,IsGatewayInstalled:string,RemoteIPLongitude:string,RemoteIPLatitude:string,RemoteIPCountry:string,SubscriptionId:string,ResourceGroup:string,ResourceProvider:string,Resource:string,ResourceId:string,ResourceType:string,ComputerEnvironment:string,Solutions:string,VMUUID:string,ComputerPrivateIPs:string,Type:string,_ResourceId:string) kind=storage dataformat=parquet 
 ( 
-    h@'https://adxlogretention.blob.core.windows.net/splunktableext/m2131/data;impersonate' 
+    h@'https://adxlogretention.blob.core.windows.net/heartbeatext/m2131/data;impersonate' 
 )
 ```
 
