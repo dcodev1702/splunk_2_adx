@@ -39,15 +39,15 @@ Supported Data Formats: CSV, JSON, and PARQUET <br />
 
 Create a continious export job from ADX -> ADLSv2
 ```console
-.create-or-alter continuous-export SplunkTableExport over (SplunkTable) to table SplunkTableEXT with (managedIdentity="system", intervalBetweenRuns=5m) <| SplunkTable
+.create-or-alter continuous-export HeartbeatExport over (Heartbeat) to table HeartbeatEXT with (managedIdentity="system", intervalBetweenRuns=5m) <| Heartbeat
 ```
 
 ADX QUERY (internal table) <br />
 The internal and external tables should operate in the same manner with respect to KQL queries <br />
 ```console
-SplunkTable
+Heartbeat
 
-SplunkTable
+Heartbeat
 | extend t = parse_json(FWLogEntry)
 | distinct TimeGenerated=todatetime(t.TimeGenerated), Company=tostring(t.Company), Hacker=tostring(t.Hacker), Venue=tostring(t.Venue), Type=tostring(t.Type)
 ```
