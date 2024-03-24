@@ -10,7 +10,9 @@
 System identity: 9dd3e9c8-xxxx-4311-xxx-xxxxxxxxxxxx
 
 Give the System Managed Identity access to the database
-.add database ['splunk-2-adx'] admins ('aadapp=9dd3e9c8-xxxx-4311-xxx-xxxxxxxxxxxx')
+```console
+.add database ['sentinel-2-adx'] admins ('aadapp=9dd3e9c8-xxxx-4311-xxx-xxxxxxxxxxxx')
+```
 
 Create ADLSv2 and Container where data for the external table will reside
 Assign Managed Identity to ADLSv2 Container [ADX -> Identity -> Add 'Storage Blob Data Contributor']
