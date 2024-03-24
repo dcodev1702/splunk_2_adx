@@ -25,8 +25,9 @@ Example:
 ```
 ![BD918AE0-1407-4091-8EC7-A65CF26A75CC](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/4f9484fc-3c4d-4ef2-b55e-d1bfae328b4e)
 
-Supported Data Formats: CSV, JSON, and PARQUET
-###<span style="color:blue">!!!! THE EXTERNAL TABLE SCHEMA HAS TO MATCH THE INTERNAL TABLE SCHEMA !!!!</span>
+Supported Data Formats: CSV, JSON, and PARQUET <br />
+<span style="color:blue">!!!! THE EXTERNAL TABLE SCHEMA HAS TO MATCH THE INTERNAL TABLE SCHEMA !!!!</span>
+
 ```console
 .create external table SplunkTableEXT (FWLogEntry:dynamic) kind=storage dataformat=parquet
 ( 
