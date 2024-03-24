@@ -1,5 +1,4 @@
-// Setup continious export from ADX DBase Table to ADLSv2 (external table)
-// https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity?tabs=system-assigned%2Cazure-storage
+// [Setup continious export from ADX DBase Table to ADLSv2 (external table)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity?tabs=system-assigned%2Cazure-storage)
 .alter-merge cluster policy managed_identity ```[
     {
       "ObjectId": "system",
