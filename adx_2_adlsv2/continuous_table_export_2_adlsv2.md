@@ -14,10 +14,10 @@ Give the System Managed Identity access to the database
 .add database ['sentinel-2-adx'] admins ('aadapp=9dd3e9c8-xxxx-4311-xxx-xxxxxxxxxxxx')
 ```
 
-Create ADLSv2 and Container where data for the external table will reside
+Create ADLSv2 storage account and Container where data for the external table will reside. <br />
 Assign Managed Identity to ADLSv2 Container [ADX -> Identity -> Add 'Storage Blob Data Contributor']
 
-Create table in ADLSv2 container
+Create table in ADLSv2 container: <br />
 Storage Account: "https://adxlogretention.blob.core.windows.net/hearbeatext/m2131/data;impersonate" <br />
 Table Schema's from internal table has to exactly match the external table you're creating
 Existing internal table schema can be copied and directly applied to create the external table
