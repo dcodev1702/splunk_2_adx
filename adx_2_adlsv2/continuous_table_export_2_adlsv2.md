@@ -10,7 +10,7 @@
 System identity: 9dd3e9c8-b114-xxxx-xxx-xxxxxxxxxxxx
 ![4C5FD731-5FE9-48BE-8CB1-30844C88EC7D_1_201_a](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/afad8dd2-2a26-4525-94f2-ba7e20729bd6)
 
-Give the System Managed Identity access to the database
+Give the System Managed Identity access to the database (requires admin access rights)
 ```console
 .add database ['sentinel-2-adx'] admins ('aadapp=9dd3e9c8-b114-xxxx-xxx-xxxxxxxxxxxx')
 ```
