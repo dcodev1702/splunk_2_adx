@@ -16,7 +16,7 @@ Give the System Managed Identity access to the database
 ```
 
 Create ADLSv2 storage account and container where data for the external table will reside. <br />
-Assign Managed Identity to ADLSv2 Storage Account: [ADX -> Identity -> Add 'Storage Blob Data Contributor']
+Assign System Managed Identity to ADLSv2 Storage Account: [ADX -> Identity -> Add 'Storage Blob Data Contributor']
 ![6A7DBF0A-8301-4D3E-A33C-F52CF0BAFD7D](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/c0c82abd-aa8d-432d-9b4f-e9b55902b835)
 
 Create table in ADLSv2 container: <br />
