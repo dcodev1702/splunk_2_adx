@@ -7,16 +7,16 @@
     }
 ]```
 ```
-System identity: 9dd3e9c8-b114-xxxx-xxx-xxxxxxxxxxxx
+System Assigned Identity: 9dd3e9c8-b114-xxxx-xxx-xxxxxxxxxxxx
 ![4C5FD731-5FE9-48BE-8CB1-30844C88EC7D_1_201_a](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/afad8dd2-2a26-4525-94f2-ba7e20729bd6)
 
-Give the System Managed Identity access to the database (requires admin access rights)
+Give the System Assigned Identity access to the database (requires admin access rights)
 ```console
 .add database ['sentinel-2-adx'] admins ('aadapp=9dd3e9c8-b114-xxxx-xxx-xxxxxxxxxxxx')
 ```
 
 Create ADLSv2 storage account and container where data for the external table will reside. <br />
-Assign System Managed Identity to ADLSv2 Storage Account: [ADX -> Identity -> Add 'Storage Blob Data Contributor']
+Assign System Assigned Identity to ADLSv2 Storage Account: [ADX -> Identity -> Add 'Storage Blob Data Contributor']
 ![6A7DBF0A-8301-4D3E-A33C-F52CF0BAFD7D](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/c0c82abd-aa8d-432d-9b4f-e9b55902b835)
 
 Create table in ADLSv2 container: <br />
