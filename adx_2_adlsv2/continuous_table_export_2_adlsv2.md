@@ -31,7 +31,9 @@ Supported Data Formats: CSV, JSON, and PARQUET <br />
 <span style="color:blue">*!!!! THE EXTERNAL TABLE SCHEMA HAS TO MATCH THE INTERNAL TABLE SCHEMA !!!!*</span>
 
 ```console
-.create external table HeartbeatEXT (TenantId:string,SourceSystem:string,TimeGenerated:datetime,MG:string,ManagementGroupName:string,SourceComputerId:string,ComputerIP:string,Computer:string,Category:string,OSType:string,OSName:string,OSMajorVersion:string,OSMinorVersion:string,Version:string,SCAgentChannel:string,IsGatewayInstalled:string,RemoteIPLongitude:string,RemoteIPLatitude:string,RemoteIPCountry:string,SubscriptionId:string,ResourceGroup:string,ResourceProvider:string,Resource:string,ResourceId:string,ResourceType:string,ComputerEnvironment:string,Solutions:string,VMUUID:string,ComputerPrivateIPs:string,Type:string,_ResourceId:string) kind=storage dataformat=parquet 
+.create external table HeartbeatEXT (TenantId:string,SourceSystem:string,TimeGenerated:datetime,MG:string,ManagementGroupName:string,SourceComputerId:string,ComputerIP:string,Computer:string,Category:string,OSType:string,OSName:string,OSMajorVersion:string,OSMinorVersion:string,Version:string,SCAgentChannel:string,IsGatewayInstalled:string,RemoteIPLongitude:string,RemoteIPLatitude:string,RemoteIPCountry:string,SubscriptionId:string,ResourceGroup:string,ResourceProvider:string,Resource:string,ResourceId:string,ResourceType:string,ComputerEnvironment:string,Solutions:string,VMUUID:string,ComputerPrivateIPs:string,Type:string,_ResourceId:string)
+kind=storage
+dataformat=parquet 
 ( 
     h@'https://adxlogretention.blob.core.windows.net/heartbeat/m2131/data;impersonate' 
 )
