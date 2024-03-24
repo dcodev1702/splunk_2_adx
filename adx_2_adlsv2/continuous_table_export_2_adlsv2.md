@@ -41,6 +41,8 @@ Create a continious export job from ADX -> ADLSv2
 ```console
 .create-or-alter continuous-export HeartbeatExport over (Heartbeat) to table HeartbeatEXT with (managedIdentity="system", intervalBetweenRuns=5m) <| Heartbeat
 ```
+![9BF8A98F-9B55-4C5E-B7F1-750D38DDD89D](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/509903bb-bc8a-4065-ab40-01f225d9da98)
+
 
 ADX QUERY (internal table) <br />
 The internal and external tables should operate in the same manner with respect to KQL queries <br />
