@@ -48,15 +48,13 @@ The internal and external tables should operate in the same manner with respect 
 Heartbeat
 
 Heartbeat
-| extend t = parse_json(FWLogEntry)
-| distinct TimeGenerated=todatetime(t.TimeGenerated), Company=tostring(t.Company), Hacker=tostring(t.Hacker), Venue=tostring(t.Venue), Type=tostring(t.Type)
+| where Computer == 'MIR8-Win10-ADM.student7.local' and TimeGenerated > ago(10m)
 ```
 
-ADLSv2 QUERY (external table)
+ADLSv2 QUERY (external table) <br />
 ```console
-external_table("SplunkTableEXT")
+external_table("HeartbeatEXT")
 
-external_table('SplunkTableEXT')
-| extend t = parse_json(FWLogEntry)
-| distinct TimeGenerated=todatetime(t.TimeGenerated), Company=tostring(t.Company), Hacker=tostring(t.Hacker), Venue=tostring(t.Venue), Type=tostring(t.Type)
+external_table('HeartbeatEXT')
+| where Computer == 'MIR8-Win10-ADM.student7.local' and TimeGenerated > ago(10m)
 ```
