@@ -38,8 +38,8 @@ Sample Data (JSON): data_ingest_all.json
 // Create table
 .create table SplunkTableRaw (Records:dynamic)
 ```
-$.FWLogEntry <-> MUST MATCH THE JSON OBJECT GETTING INGESTED FROM THE SOURCE [JSON FILE]!!
-FWLogEntry gets MAPPED TO THE "RECORDS" COLUMN of the SplunkTableRaw Table
+$.FWLogEntry <-> MUST MATCH THE JSON OBJECT GETTING INGESTED FROM THE SOURCE [JSON FILE]!! <br />
+FWLogEntry gets MAPPED TO THE "RECORDS" COLUMN of the SplunkTableRaw Table <br />
 ```console
 // e.g. {"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"MFCC-G9-DOG", "Hacker":"Maj JJ Bottles", "Venue":"BSides DC", "Type":"SplunkTable"}}
 .create table SplunkTableRaw ingestion json mapping 'SplunkTableMapping' '[{"column":"Records", "Properties":{"Path":"$.FWLogEntry"}}]'
