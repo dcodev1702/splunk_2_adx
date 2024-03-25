@@ -34,8 +34,8 @@ Sample Data (JSON): data_ingest_all.json
 ### ADX Database Query (SplunkTable) via ADX
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/812b5597-70cd-4363-a5d4-0e4d07cbee0e)
 
+Create table for data to reside
 ```console
-// Create table
 .create table SplunkTableRaw (Records:dynamic)
 ```
 $.FWLogEntry <-> MUST MATCH THE JSON OBJECT GETTING INGESTED FROM THE SOURCE [JSON FILE]!! <br />
