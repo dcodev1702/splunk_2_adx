@@ -34,7 +34,7 @@ Sample Data (JSON): data_ingest_all.json
 ### ADX Database Query (SplunkTable) via ADX
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/812b5597-70cd-4363-a5d4-0e4d07cbee0e)
 
-Create table for data to reside
+Create temp table where data will ingest to
 ```console
 .create table SplunkTableRaw (Records:dynamic)
 ```
@@ -48,16 +48,20 @@ FWLogEntry gets MAPPED TO THE "RECORDS" COLUMN of the SplunkTableRaw Table <br /
 .alter-merge table SplunkTableRaw policy retention softdelete = 0d
 ```
 
+Create table (SplunkTable) where the data will reside
 ```console
 .create table SplunkTable (FWLogEntry:dynamic)
+```
 
+Create SplunkTableExpand() function
+```console
 .create-or-alter function SplunkTableExpand() {
     SplunkTableRaw
     | project Records
 }
 ```
 
-Map SplunkTableExpand() function to the SplunkTable
+Apply SplunkTableExpand() function to the SplunkTable
 ```console
 .alter table SplunkTable policy update @'[{"Source": "SplunkTableRaw", "Query": "SplunkTableExpand()", "IsEnabled": true, "IsTransactional": true}]'
 ```
