@@ -34,6 +34,51 @@ Sample Data (JSON): data_ingest_all.json
 ### ADX Database Query (SplunkTable) via ADX
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/812b5597-70cd-4363-a5d4-0e4d07cbee0e)
 
+```console
+// Create table
+.create table SplunkTableRaw (Records:dynamic)
+```
+$.FWLogEntry <-> MUST MATCH THE JSON OBJECT GETTING INGESTED FROM THE SOURCE [JSON FILE]!!
+FWLogEntry gets MAPPED TO THE "RECORDS" COLUMN of the SplunkTableRaw Table
+```console
+// e.g. {"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"MFCC-G9-DOG", "Hacker":"Maj JJ Bottles", "Venue":"BSides DC", "Type":"SplunkTable"}}
+.create table SplunkTableRaw ingestion json mapping 'SplunkTableMapping' '[{"column":"Records", "Properties":{"Path":"$.FWLogEntry"}}]'
+```
+```console
+.alter-merge table SplunkTableRaw policy retention softdelete = 0d
+```
+
+```console
+.create table SplunkTable (FWLogEntry:dynamic)
+
+.create-or-alter function SplunkTableExpand() {
+    SplunkTableRaw
+    | project Records
+}
+```
+
+Map SplunkTableExpand() function to the SplunkTable
+```console
+.alter table SplunkTable policy update @'[{"Source": "SplunkTableRaw", "Query": "SplunkTableExpand()", "IsEnabled": true, "IsTransactional": true}]'
+```
+If you ever need to drop the SplunkTable or the SplunkTableExpand() Function
+```console
+//.drop function SplunkTableExpand
+//.drop table SplunkTable ingestion json mapping "SplunkTable_JSON_Mapping"
+```
+
+Test data to ingest and ensure the tables, policies, mapping, and expand function is operating correctly. 
+```console
+.ingest inline into table SplunkTable with (format = "json") <| {"FWLogEntry":{"TimeGenerated":"2024-03-13T18:45:54.9122018Z", "Company":"MFCC-G9-DOG", "Hacker":"Maj JJ Bottles", "Venue":"BSides DC", "Type":"SplunkTable"}}
+```
+
+Query SplunkTable
+```console
+SplunkTable
+| extend t = parse_json(FWLogEntry)
+| project TimeGenerated=todatetime(t.TimeGenerated), Company=tostring(t.Company), Hacker=tostring(t.Hacker), Venue=tostring(t.Venue), Type=tostring(t.Type)
+```
+
 ### Enable Continious Export of ADX DBase (Tables) to ADLSv2 (LT storage) via managed identities (system)
 Microsoft Source Document: [here!](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity?tabs=system-assigned%2Cazure-storage)
 ![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/26a304ac-d73c-49e9-ad69-1317a152e96c)
