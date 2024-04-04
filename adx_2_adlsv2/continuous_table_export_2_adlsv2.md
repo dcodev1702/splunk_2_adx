@@ -1,8 +1,8 @@
 Ensure the identity used to complete this demo has sufficent access to the ADX Cluster.
-* On the cluster, go to the "permissions" blade, select "AllDatabasesAdmin" and add your identity. 
-[](https://learn.microsoft.com/en-us/azure/data-explorer/manage-cluster-permissions)
+* On the cluster, go to the "permissions" blade, select "AllDatabasesAdmin" and add your identity. <br />
+[!](https://learn.microsoft.com/en-us/azure/data-explorer/manage-cluster-permissions)
 
-[](https://learn.microsoft.com/en-us/azure/data-explorer/manage-cluster-permissions)
+
 [Setup continious export from ADX DBase Table to ADLSv2 (external table)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity?tabs=system-assigned%2Cazure-storage)
 ```console
 .alter-merge cluster policy managed_identity ```[
