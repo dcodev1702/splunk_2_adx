@@ -1,4 +1,4 @@
-Ensure the identity used has sufficent access to the ADX Cluster.
+Ensure the identity used has sufficent access/permissions to the ADX Cluster.
 * On the cluster, go to the "permissions" blade, select "AllDatabasesAdmin" and add your identity. <br />
 [Set permissions on ADX Cluster](https://learn.microsoft.com/en-us/azure/data-explorer/manage-cluster-permissions)
 
