@@ -2,6 +2,9 @@ Ensure the identity used has sufficent access/permissions to the ADX Cluster.
 * On the cluster, go to the "permissions" blade, select "AllDatabasesAdmin" and add your identity. <br />
 [Set permissions on ADX Cluster](https://learn.microsoft.com/en-us/azure/data-explorer/manage-cluster-permissions)
 
+![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/b055961d-a65d-483a-b331-627605469ed5)
+
+
 
 [Setup continious export from ADX DBase Table to ADLSv2 (external table)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity?tabs=system-assigned%2Cazure-storage)
 ```console
