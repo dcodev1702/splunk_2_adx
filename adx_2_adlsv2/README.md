@@ -1,5 +1,5 @@
-Ensure the identity used has sufficent access/permissions to the ADX Cluster.  These permissions are required in order to modify the cluster policy
-so the Cluster's system managed identity can send 'Automated Flows' for continuous export to ADLS.
+Ensure the identity used to provision these resources and make administrative changes has sufficent access/permissions to the ADX Cluster.  
+These permissions are required in order to modify the cluster policy so the Cluster's system managed identity can send 'Automated Flows' for continuous export to ADLS.
 * On the cluster, go to the "permissions" blade, select "AllDatabasesAdmin" and add your identity. <br />
 [Set permissions on ADX Cluster](https://learn.microsoft.com/en-us/azure/data-explorer/manage-cluster-permissions)
 
