@@ -73,3 +73,16 @@ external_table('HeartbeatEXT')
 | where Computer == 'MIR8-Win10-ADM.student7.local' and TimeGenerated > ago(10m)
 ```
 ![AF95AC0F-3E1A-4EE8-A470-1FD5D8685FD3_1_201_a](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/133e808a-cb4e-4bda-85c4-f35645bdbb75)
+
+
+Show current Continuous Exports for a particular database
+```console
+.show continuous-exports
+```
+![image](https://github.com/dcodev1702/splunk_2_adx/assets/32214072/98f39d04-cddd-4b86-9951-b1ac501d6cfd)
+
+
+Drop Continuous Exports (if required)
+```console
+.drop continuous-export HeartbeatExport
+```
