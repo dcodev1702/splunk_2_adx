@@ -1,0 +1,5 @@
+{ 
+   "ClientID" : "60fd4241-d24c-415a-bee6-d09f917f4132", 
+   "Secret" : "kA78Q~~_LIzk.20Jpus1MmMpqWHYGA~f4P5YdaUk",
+   "TenantID" : "765ec8f2-a954-420b-9b0e-545be2bd1ad2"
+}
