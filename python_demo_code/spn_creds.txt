@@ -1,0 +1,5 @@
+App Registration for Python AI App :)
+
+"ClientID" : "60fd4241-d24c-415a-bee6-d09f917f4132", 
+"Secret" : "wQl8Q~ERtxIq0WbGtftb5E42~KyX7Fw3CajGNb4N",
+"TenantID" : "765ec8f2-a954-420b-9b0e-545be2bd1ad2"
